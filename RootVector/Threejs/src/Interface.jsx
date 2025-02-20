@@ -13,7 +13,7 @@ export function Interface()
             <li>hola</li>
         </ul>
         </div>
-        <div>No sé donde va esto Teorema</div>
+        <div>Teorema</div>
     </div>
 }
 
