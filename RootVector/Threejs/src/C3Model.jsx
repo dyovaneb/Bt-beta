@@ -1,0 +1,681 @@
+import React, { useRef } from "react";
+import { useGLTF } from "@react-three/drei";
+import useStore from "./stores/useGame";
+
+// algo que resalte la base y la raíz más larga (planos perpendiculares y la pirámide que forman).
+
+export default function C3Model(props) {
+  const { setSelectedMesh } = useStore();
+  const { nodes, materials } = useGLTF("./C3v2.glb");
+  console.log(nodes)
+  const eventHandler = (event) => 
+    {
+        console.log('object', materials) //detecta que objeto clikié, hay que hacer que eso cambie el texto del otro fragmento.
+        setSelectedMesh(event.object.name)
+        event.stopPropagation()
+    }
+  return (
+    <group {...props} dispose={null} onClick = { eventHandler } >
+      <mesh
+        name="(-200)"
+        castShadow
+        receiveShadow
+        geometry={nodes["(-200)"].geometry}
+        material={materials.default}
+        position={[-2, 0, 0]}
+      />
+      <mesh
+        name="(00-2)R"
+        castShadow
+        receiveShadow
+        geometry={nodes["(00-2)R"].geometry}
+        material={materials.default}
+        position={[0, -1.002, 0]}
+        scale={2.004}
+      />
+      <mesh
+        name="(-200)R"
+        castShadow
+        receiveShadow
+        geometry={nodes["(-200)R"].geometry}
+        material={materials.default}
+        position={[-1.002, 0, 0]}
+        rotation={[0, 0, -Math.PI / 2]}
+        scale={2.004}
+      />
+      <mesh
+        name="(020)R"
+        castShadow
+        receiveShadow
+        geometry={nodes["(020)R"].geometry}
+        material={materials.default}
+        position={[0, 0, -1.002]}
+        rotation={[Math.PI / 2, 0, 0]}
+        scale={2.004}
+      />
+      <mesh
+        name="(-10-1)R"
+        castShadow
+        receiveShadow
+        geometry={nodes["(-10-1)R"].geometry}
+        material={materials.default}
+        position={[-0.502, -0.502, 0]}
+        rotation={[0, 0, -Math.PI / 4]}
+        scale={1.419}
+      />
+      <mesh
+        name="(-101)R"
+        castShadow
+        receiveShadow
+        geometry={nodes["(-101)R"].geometry}
+        material={materials.default}
+        position={[-0.502, 0.502, 0]}
+        rotation={[0, 0, -2.356]}
+        scale={1.419}
+      />
+      <mesh
+        name="(-110)R"
+        castShadow
+        receiveShadow
+        geometry={nodes["(-110)R"].geometry}
+        material={materials.default}
+        position={[-0.498, 0, -0.498]}
+        rotation={[Math.PI / 2, 0, -Math.PI / 4]}
+        scale={1.407}
+      />
+      <mesh
+        name="(-1-10)R"
+        castShadow
+        receiveShadow
+        geometry={nodes["(-1-10)R"].geometry}
+        material={materials.default}
+        position={[-0.498, 0, 0.498]}
+        rotation={[Math.PI / 2, 0, -2.356]}
+        scale={1.407}
+      />
+      <mesh
+        name="(01-1)R"
+        castShadow
+        receiveShadow
+        geometry={nodes["(01-1)R"].geometry}
+        material={materials.default}
+        position={[0, -0.501, -0.501]}
+        rotation={[Math.PI / 4, 0, 0]}
+        scale={1.418}
+      />
+      <mesh
+        name="(011)R"
+        castShadow
+        receiveShadow
+        geometry={nodes["(011)R"].geometry}
+        material={materials.default}
+        position={[0, 0.501, -0.501]}
+        rotation={[2.356, 0, 0]}
+        scale={1.418}
+      />
+      <mesh
+        name="(020)"
+        castShadow
+        receiveShadow
+        geometry={nodes["(020)"].geometry}
+        material={materials.default}
+        position={[0, 0, -2]}
+      />
+      <mesh
+        name="(200)"
+        castShadow
+        receiveShadow
+        geometry={nodes["(200)"].geometry}
+        material={materials.default}
+        position={[2, 0, 0]}
+      />
+      <mesh
+        name="(0-20)"
+        castShadow
+        receiveShadow
+        geometry={nodes["(0-20)"].geometry}
+        material={materials.default}
+        position={[0, 0, 2]}
+      />
+      <mesh
+        name="(00-2)"
+        castShadow
+        receiveShadow
+        geometry={nodes["(00-2)"].geometry}
+        material={materials.default}
+        position={[0, -2, 0]}
+      />
+      <mesh
+        name="(002)"
+        castShadow
+        receiveShadow
+        geometry={nodes["(002)"].geometry}
+        material={materials.default}
+        position={[0, 2, 0]}
+      />
+      <mesh
+        name="(-10-1)"
+        castShadow
+        receiveShadow
+        geometry={nodes["(-10-1)"].geometry}
+        material={materials.default}
+        position={[-1, -1, 0]}
+      />
+      <mesh
+        name="(0-1-1)"
+        castShadow
+        receiveShadow
+        geometry={nodes["(0-1-1)"].geometry}
+        material={materials.default}
+        position={[0, -1, 1]}
+      />
+      <mesh
+        name="(-1-10)"
+        castShadow
+        receiveShadow
+        geometry={nodes["(-1-10)"].geometry}
+        material={materials.default}
+        position={[-1, 0, 1]}
+      />
+      <mesh
+        name="(0-11)"
+        castShadow
+        receiveShadow
+        geometry={nodes["(0-11)"].geometry}
+        material={materials.default}
+        position={[0, 1, 1]}
+      />
+      <mesh
+        name="(-101)"
+        castShadow
+        receiveShadow
+        geometry={nodes["(-101)"].geometry}
+        material={materials.default}
+        position={[-1, 1, 0]}
+      />
+      <mesh
+        name="(-110)"
+        castShadow
+        receiveShadow
+        geometry={nodes["(-110)"].geometry}
+        material={materials.default}
+        position={[-1, 0, -1]}
+      />
+      <mesh
+        name="(01-1)"
+        castShadow
+        receiveShadow
+        geometry={nodes["(01-1)"].geometry}
+        material={materials.default}
+        position={[0, -1, -1]}
+      />
+      <mesh
+        name="(011)"
+        castShadow
+        receiveShadow
+        geometry={nodes["(011)"].geometry}
+        material={materials.default}
+        position={[0, 1, -1]}
+      />
+      <mesh
+        name="(1-10)"
+        castShadow
+        receiveShadow
+        geometry={nodes["(1-10)"].geometry}
+        material={materials.default}
+        position={[1, 0, 1]}
+      />
+      <mesh
+        name="(10-1)"
+        castShadow
+        receiveShadow
+        geometry={nodes["(10-1)"].geometry}
+        material={materials.default}
+        position={[1, -1, 0]}
+      />
+      <mesh
+        name="(101)"
+        castShadow
+        receiveShadow
+        geometry={nodes["(101)"].geometry}
+        material={materials.default}
+        position={[1, 1, 0]}
+      />
+      <mesh
+        name="(110)"
+        castShadow
+        receiveShadow
+        geometry={nodes["(110)"].geometry}
+        material={materials.default}
+        position={[1, 0, -1]}
+      />
+      <mesh
+        name="(200)R"
+        castShadow
+        receiveShadow
+        geometry={nodes["(200)R"].geometry}
+        material={materials.default}
+        position={[1.002, 0, 0]}
+        rotation={[0, 0, -Math.PI / 2]}
+        scale={2.004}
+      />
+      <mesh
+        name="(002)R"
+        castShadow
+        receiveShadow
+        geometry={nodes["(002)R"].geometry}
+        material={materials.default}
+        position={[0, 1.002, 0]}
+        scale={2.004}
+      />
+      <mesh
+        name="(0-20)R"
+        castShadow
+        receiveShadow
+        geometry={nodes["(0-20)R"].geometry}
+        material={materials.default}
+        position={[0, 0, 1.002]}
+        rotation={[Math.PI / 2, 0, 0]}
+        scale={2.004}
+      />
+      <mesh
+        name="(1-10)R"
+        castShadow
+        receiveShadow
+        geometry={nodes["(1-10)R"].geometry}
+        material={materials.default}
+        position={[0.498, 0, 0.498]}
+        rotation={[Math.PI / 2, 0, -Math.PI / 4]}
+        scale={1.407}
+      />
+      <mesh
+        name="(110)R"
+        castShadow
+        receiveShadow
+        geometry={nodes["(110)R"].geometry}
+        material={materials.default}
+        position={[0.498, 0, -0.498]}
+        rotation={[Math.PI / 2, 0, -2.356]}
+        scale={1.407}
+      />
+      <mesh
+        name="(0-11)R"
+        castShadow
+        receiveShadow
+        geometry={nodes["(0-11)R"].geometry}
+        material={materials.default}
+        position={[0, 0.501, 0.501]}
+        rotation={[Math.PI / 4, 0, 0]}
+        scale={1.418}
+      />
+      <mesh
+        name="(101)R"
+        castShadow
+        receiveShadow
+        geometry={nodes["(101)R"].geometry}
+        material={materials.default}
+        position={[0.502, 0.502, 0]}
+        rotation={[0, 0, -Math.PI / 4]}
+        scale={1.419}
+      />
+      <mesh
+        name="(0-1-1)R"
+        castShadow
+        receiveShadow
+        geometry={nodes["(0-1-1)R"].geometry}
+        material={materials.default}
+        position={[0, -0.501, 0.501]}
+        rotation={[2.356, 0, 0]}
+        scale={1.418}
+      />
+      <mesh
+        name="(10-1)R"
+        castShadow
+        receiveShadow
+        geometry={nodes["(10-1)R"].geometry}
+        material={materials.default}
+        position={[0.502, -0.502, 0]}
+        rotation={[0, 0, -2.356]}
+        scale={1.419}
+      />
+      <mesh
+        name="(01-1)(-101)(200)"
+        castShadow
+        receiveShadow
+        geometry={nodes["(01-1)(-101)(200)"].geometry}
+        material={materials.default}
+      />
+      <mesh
+        name="(01-1)(-1-10)(200)"
+        castShadow
+        receiveShadow
+        geometry={nodes["(01-1)(-1-10)(200)"].geometry}
+        material={materials.default}
+      />
+      <mesh
+        name="(1-10)(01-1)(002)"
+        castShadow
+        receiveShadow
+        geometry={nodes["(1-10)(01-1)(002)"].geometry}
+        material={materials.default}
+      />
+      <mesh
+        name="(-1-10)(01-1)(002)"
+        castShadow
+        receiveShadow
+        geometry={nodes["(-1-10)(01-1)(002)"].geometry}
+        material={materials.default}
+      />
+      <mesh
+        name="(01-1)(1-10)(-200)"
+        castShadow
+        receiveShadow
+        geometry={nodes["(01-1)(1-10)(-200)"].geometry}
+        material={materials.default}
+      />
+      <mesh
+        name="(01-1)(101)(-200)"
+        castShadow
+        receiveShadow
+        geometry={nodes["(01-1)(101)(-200)"].geometry}
+        material={materials.default}
+      />
+      <mesh
+        name="(101)(01-1)(0-20)"
+        castShadow
+        receiveShadow
+        geometry={nodes["(101)(01-1)(0-20)"].geometry}
+        material={materials.default}
+      />
+      <mesh
+        name="(-101)(01-1)(0-20)"
+        castShadow
+        receiveShadow
+        geometry={nodes["(-101)(01-1)(0-20)"].geometry}
+        material={materials.default}
+      />
+      <mesh
+        name="(0-1-1)(-101)(200)"
+        castShadow
+        receiveShadow
+        geometry={nodes["(0-1-1)(-101)(200)"].geometry}
+        material={materials.default}
+      />
+      <mesh
+        name="(-101)(1-10)(020)"
+        castShadow
+        receiveShadow
+        geometry={nodes["(-101)(1-10)(020)"].geometry}
+        material={materials.default}
+      />
+      <mesh
+        name="(-101)(0-1-1)(020)"
+        castShadow
+        receiveShadow
+        geometry={nodes["(-101)(0-1-1)(020)"].geometry}
+        material={materials.default}
+      />
+      <mesh
+        name="(-101)(110)(0-20)"
+        castShadow
+        receiveShadow
+        geometry={nodes["(-101)(110)(0-20)"].geometry}
+        material={materials.default}
+      />
+      <mesh
+        name="(1-10)(-101)(00-2)"
+        castShadow
+        receiveShadow
+        geometry={nodes["(1-10)(-101)(00-2)"].geometry}
+        material={materials.default}
+      />
+      <mesh
+        name="(110)(-101)(00-2)"
+        castShadow
+        receiveShadow
+        geometry={nodes["(110)(-101)(00-2)"].geometry}
+        material={materials.default}
+      />
+      <mesh
+        name="(011)(-10-1)(200)"
+        castShadow
+        receiveShadow
+        geometry={nodes["(011)(-10-1)(200)"].geometry}
+        material={materials.default}
+      />
+      <mesh
+        name="(011)(-1-10)(200)"
+        castShadow
+        receiveShadow
+        geometry={nodes["(011)(-1-10)(200)"].geometry}
+        material={materials.default}
+      />
+      <mesh
+        name="(0-11)(-110)(200)"
+        castShadow
+        receiveShadow
+        geometry={nodes["(0-11)(-110)(200)"].geometry}
+        material={materials.default}
+      />
+      <mesh
+        name="(0-11)(-10-1)(200)"
+        castShadow
+        receiveShadow
+        geometry={nodes["(0-11)(-10-1)(200)"].geometry}
+        material={materials.default}
+      />
+      <mesh
+        name="(0-1-1)(-110)(200)"
+        castShadow
+        receiveShadow
+        geometry={nodes["(0-1-1)(-110)(200)"].geometry}
+        material={materials.default}
+      />
+      <mesh
+        name="(10-1)(0-11)(020)"
+        castShadow
+        receiveShadow
+        geometry={nodes["(10-1)(0-11)(020)"].geometry}
+        material={materials.default}
+      />
+      <mesh
+        name="(101)(0-1-1)(020)"
+        castShadow
+        receiveShadow
+        geometry={nodes["(101)(0-1-1)(020)"].geometry}
+        material={materials.default}
+      />
+      <mesh
+        name="(110)(0-1-1)(002)"
+        castShadow
+        receiveShadow
+        geometry={nodes["(110)(0-1-1)(002)"].geometry}
+        material={materials.default}
+      />
+      <mesh
+        name="(10-1)(011)(0-20)"
+        castShadow
+        receiveShadow
+        geometry={nodes["(10-1)(011)(0-20)"].geometry}
+        material={materials.default}
+      />
+      <mesh
+        name="(1-10)(011)(00-2)"
+        castShadow
+        receiveShadow
+        geometry={nodes["(1-10)(011)(00-2)"].geometry}
+        material={materials.default}
+      />
+      <mesh
+        name="(110)(0-11)(00-2)"
+        castShadow
+        receiveShadow
+        geometry={nodes["(110)(0-11)(00-2)"].geometry}
+        material={materials.default}
+      />
+      <mesh
+        name="(10-1)(-1-10)(020)"
+        castShadow
+        receiveShadow
+        geometry={nodes["(10-1)(-1-10)(020)"].geometry}
+        material={materials.default}
+      />
+      <mesh
+        name="(101)(-1-10)(020)"
+        castShadow
+        receiveShadow
+        geometry={nodes["(101)(-1-10)(020)"].geometry}
+        material={materials.default}
+      />
+      <mesh
+        name="(-10-1)(1-10)(020)"
+        castShadow
+        receiveShadow
+        geometry={nodes["(-10-1)(1-10)(020)"].geometry}
+        material={materials.default}
+      />
+      <mesh
+        name="(-10-1)(0-11)(020)"
+        castShadow
+        receiveShadow
+        geometry={nodes["(-10-1)(0-11)(020)"].geometry}
+        material={materials.default}
+      />
+      <mesh
+        name="(110)(-10-1)(002)"
+        castShadow
+        receiveShadow
+        geometry={nodes["(110)(-10-1)(002)"].geometry}
+        material={materials.default}
+      />
+      <mesh
+        name="(-110)(10-1)(002)"
+        castShadow
+        receiveShadow
+        geometry={nodes["(-110)(10-1)(002)"].geometry}
+        material={materials.default}
+      />
+      <mesh
+        name="(011)(10-1)(-200)"
+        castShadow
+        receiveShadow
+        geometry={nodes["(011)(10-1)(-200)"].geometry}
+        material={materials.default}
+      />
+      <mesh
+        name="(-110)(101)(00-2)"
+        castShadow
+        receiveShadow
+        geometry={nodes["(-110)(101)(00-2)"].geometry}
+        material={materials.default}
+      />
+      <mesh
+        name="(-1-10)(10-1)(002)"
+        castShadow
+        receiveShadow
+        geometry={nodes["(-1-10)(10-1)(002)"].geometry}
+        material={materials.default}
+      />
+      <mesh
+        name="(-1-10)(101)(00-2)"
+        castShadow
+        receiveShadow
+        geometry={nodes["(-1-10)(101)(00-2)"].geometry}
+        material={materials.default}
+      />
+      <mesh
+        name="(-1-10)(011)(00-2)"
+        castShadow
+        receiveShadow
+        geometry={nodes["(-1-10)(011)(00-2)"].geometry}
+        material={materials.default}
+      />
+      <mesh
+        name="(-110)(0-11)(00-2)"
+        castShadow
+        receiveShadow
+        geometry={nodes["(-110)(0-11)(00-2)"].geometry}
+        material={materials.default}
+      />
+      <mesh
+        name="(0-1-1)(110)(-200)"
+        castShadow
+        receiveShadow
+        geometry={nodes["(0-1-1)(110)(-200)"].geometry}
+        material={materials.default}
+      />
+      <mesh
+        name="(10-1)(-110)(0-20)"
+        castShadow
+        receiveShadow
+        geometry={nodes["(10-1)(-110)(0-20)"].geometry}
+        material={materials.default}
+      />
+      <mesh
+        name="(-10-1)(110)(0-20)"
+        castShadow
+        receiveShadow
+        geometry={nodes["(-10-1)(110)(0-20)"].geometry}
+        material={materials.default}
+      />
+      <mesh
+        name="(011)(1-10)(-200)"
+        castShadow
+        receiveShadow
+        geometry={nodes["(011)(1-10)(-200)"].geometry}
+        material={materials.default}
+      />
+      <mesh
+        name="(-10-1)(011)(0-20)"
+        castShadow
+        receiveShadow
+        geometry={nodes["(-10-1)(011)(0-20)"].geometry}
+        material={materials.default}
+      />
+      <mesh
+        name="(1-10)(-10-1)(002)"
+        castShadow
+        receiveShadow
+        geometry={nodes["(1-10)(-10-1)(002)"].geometry}
+        material={materials.default}
+      />
+      <mesh
+        name="(-110)(0-1-1)(002)"
+        castShadow
+        receiveShadow
+        geometry={nodes["(-110)(0-1-1)(002)"].geometry}
+        material={materials.default}
+      />
+      <mesh
+        name="(0-11)(110)(-200)"
+        castShadow
+        receiveShadow
+        geometry={nodes["(0-11)(110)(-200)"].geometry}
+        material={materials.default}
+      />
+      <mesh
+        name="(101)(-110)(0-20)"
+        castShadow
+        receiveShadow
+        geometry={nodes["(101)(-110)(0-20)"].geometry}
+        material={materials.default}
+      />
+      <mesh
+        name="(0-11)(10-1)(-200)"
+        castShadow
+        receiveShadow
+        geometry={nodes["(0-11)(10-1)(-200)"].geometry}
+        material={materials.default}
+      />
+      <mesh
+        name="(0-1-1)(101)(-200)"
+        castShadow
+        receiveShadow
+        geometry={nodes["(0-1-1)(101)(-200)"].geometry}
+        material={materials.default}
+      />
+    </group>
+  );
+}
+
+useGLTF.preload("./C3v2.glb");
