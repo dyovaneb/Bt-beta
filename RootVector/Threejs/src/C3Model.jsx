@@ -32,7 +32,8 @@ export const eventHandler = (event) =>
       }
       nombreRaizLarga="(" + raizlarga.toString().replace(/,/g, '') + ")";
       nombreObjetosCambiarColor.push(
-        nombreRaizLarga, 
+        nombreRaizLarga,
+        nombreRaizLarga+"R",
         event.object.alpha1, 
         event.object.alpha1+"R", 
         event.object.alpha2, 
