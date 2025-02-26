@@ -5,61 +5,76 @@ import { MeshStandardMaterial } from "three"
 
 // algo que resalte la base y la raíz más larga (planos perpendiculares y la pirámide que forman).
 
+const redMaterial = new MeshStandardMaterial({ color: "red" });
+const blueMaterial = new MeshStandardMaterial({ color: "blue", opacity: 0.5, transparent: true });
+
+let setSelectedMeshState;
+
+export const eventHandler = (event) => 
+{
+  const { setSelectedMesh } = useStore.getState();
+
+  if (event.object) {
+    const meshName = event.object.name;
+    setSelectedMesh(event.object); // este es para el zustand ?
+    //crear la lista de nombres de objetos que deben cambiar de color.
+    var nombreObjetosCambiarColor = []
+    nombreObjetosCambiarColor.push(event.object.name);
+    if(event.object.alpha1){ //si es un simplicial, se encuentra la raíz larga.
+      var raizlarga = []
+      var nombreRaizLarga = ""
+      for (let i = 0; i < 3; i++) {
+        raizlarga.push(
+          2*stringToVector(event.object.alpha1)[i] + 
+          2*stringToVector(event.object.alpha2)[i] + 
+          stringToVector(event.object.alpha3)[i]
+        );
+      }
+      nombreRaizLarga="(" + raizlarga.toString().replace(/,/g, '') + ")";
+      nombreObjetosCambiarColor.push(
+        nombreRaizLarga, 
+        event.object.alpha1, 
+        event.object.alpha1+"R", 
+        event.object.alpha2, 
+        event.object.alpha2+"R", 
+        event.object.alpha3, 
+        event.object.alpha3+"R"
+      );
+    }
+    else{
+      nombreObjetosCambiarColor.push(event.object.name+"R", event.object.name.slice(0, -1));
+    }
+
+    setSelectedMeshState(nombreObjetosCambiarColor); //este es para el material 
+  } else {
+    setSelectedMeshState(null); // Restablecer el estado si no se hace clic en un objeto
+  }
+  event.stopPropagation();
+}
+
+function stringToVector(str) {
+  // Remover los paréntesis
+  const cleanedStr = str.slice(1, -1);
+  // Dividir la cadena en componentes usando una expresión regular para manejar números negativos
+  const components = cleanedStr.match(/-?\d/g);
+  // Convertir los componentes a números
+  const vector = components.map(Number);
+  return vector;
+}
+
 export default function C3Model(props) {
   const { setSelectedMesh } = useStore();
   const { nodes, materials } = useGLTF("./C3v2.glb");
 
-  const redMaterial = new MeshStandardMaterial({ color: "red" });
-  const blueMaterial = new MeshStandardMaterial({ color: "blue", opacity: 0.5, transparent: true });
+  const [selectedMesh, setSelectedMeshStateInternal] = useState(null); //Cuando hay cambio acá, se vuelve a renderizar todo, por eso se llama a la función getmaterial de nuevo.
+  setSelectedMeshState = setSelectedMeshStateInternal;
 
-  const [selectedMesh, setSelectedMeshState] = useState(null);
-
-  const eventHandler = (event) => 
-    {
-      const meshName = event.object.name;
-      //console.log('object', materials) //detecta que objeto clikié, hay que hacer que eso cambie el texto del otro fragmento.
-      setSelectedMesh(event.object); // este es para el zustand ?
-      setSelectedMeshState(event.object); //este es para el material 
-      event.stopPropagation()
+  const getMaterial = (meshName) => { 
+    if(selectedMesh && selectedMesh.includes(meshName)){
+      return redMaterial;
     }
-
-    function stringToVector(str) {
-      // Remover los paréntesis
-      const cleanedStr = str.slice(1, -1);
-      // Dividir la cadena en componentes usando una expresión regular para manejar números negativos
-      const components = cleanedStr.match(/-?\d/g);
-      // Convertir los componentes a números
-      const vector = components.map(Number);
-      return vector;
-    }
-
-    const getMaterial = (meshName) => { //arreglar para que la logica de los nombres a resaltar sea en el eventhandler y acá solo llegue una lista con los elementos a resaltar.
-      var raizlarga = []
-      var nombreRaizLarga = ""
-      if (selectedMesh && selectedMesh.alpha1) {
-        for (let i = 0; i < 3; i++) {
-          raizlarga.push(2*stringToVector(selectedMesh.alpha1)[i] + 2*stringToVector(selectedMesh.alpha2)[i] + stringToVector(selectedMesh.alpha3)[i]);
-        }
-        nombreRaizLarga="(" + raizlarga.toString().replace(/,/g, '') + ")";
-      }
-      if (selectedMesh && (selectedMesh.name === meshName || selectedMesh.name+"R" === meshName || selectedMesh.name.slice(0, -1) === meshName)) {
-        return redMaterial;
-      }
-      if (selectedMesh && 
-            ( selectedMesh.alpha1 === meshName || 
-              selectedMesh.alpha1+"R" === meshName || 
-              selectedMesh.alpha2 === meshName || 
-              selectedMesh.alpha2+"R" === meshName || 
-              selectedMesh.alpha3 === meshName ||
-              selectedMesh.alpha3+"R" === meshName ||
-              nombreRaizLarga === meshName ||
-              nombreRaizLarga+"R" === meshName
-            )
-          ) {
-        return redMaterial;
-      }
-      return blueMaterial;
-    };
+    return blueMaterial;
+  };
 
   return (
     <group {...props} dispose={null} onClick={eventHandler}>
@@ -870,3 +885,5 @@ export default function C3Model(props) {
 }
 
 useGLTF.preload("./C3v2.glb");
+
+export { setSelectedMeshState };

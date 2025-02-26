@@ -8,7 +8,7 @@ export default function Experience()
 
     const rootSystem = useGame((state) => { return state.rootSystem }) //solo hay que pedir la info que se necesita, si algo cambia se renderea el componente completo.  esto es la store.
     console.log(rootSystem)
-    return <>
+    return < >
 
         <Perf position="top-right" />
 
