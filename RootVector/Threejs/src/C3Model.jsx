@@ -6,6 +6,7 @@ import { MeshStandardMaterial } from "three"
 // algo que resalte la base y la raíz más larga (planos perpendiculares y la pirámide que forman).
 
 const redMaterial = new MeshStandardMaterial({ color: "red" });
+const greenMaterial = new MeshStandardMaterial({ color: "green" });
 const blueMaterial = new MeshStandardMaterial({ color: "blue", opacity: 0.5, transparent: true });
 
 let setSelectedMeshState;
@@ -18,9 +19,10 @@ export const eventHandler = (event) =>
     const meshName = event.object.name;
     setSelectedMesh(event.object); // este es para el zustand ?
     //crear la lista de nombres de objetos que deben cambiar de color.
-    var nombreObjetosCambiarColor = []
-    nombreObjetosCambiarColor.push(event.object.name);
+    var nombreObjetosCambiarColor = [[],[],true];
+    nombreObjetosCambiarColor[1].push(event.object.name);
     if(event.object.alpha1){ //si es un simplicial, se encuentra la raíz larga.
+      nombreObjetosCambiarColor[2]=false;
       var raizlarga = []
       var nombreRaizLarga = ""
       for (let i = 0; i < 3; i++) {
@@ -31,9 +33,11 @@ export const eventHandler = (event) =>
         );
       }
       nombreRaizLarga="(" + raizlarga.toString().replace(/,/g, '') + ")";
-      nombreObjetosCambiarColor.push(
+      nombreObjetosCambiarColor[0].push(
         nombreRaizLarga,
-        nombreRaizLarga+"R",
+        nombreRaizLarga+"R"
+      );
+      nombreObjetosCambiarColor[1].push(
         event.object.alpha1, 
         event.object.alpha1+"R", 
         event.object.alpha2, 
@@ -42,13 +46,13 @@ export const eventHandler = (event) =>
         event.object.alpha3+"R"
       );
     }
-    else{
-      nombreObjetosCambiarColor.push(event.object.name+"R", event.object.name.slice(0, -1));
+    else{ // si no es un simplicial, debería pintar todos los que son formados por él.
+      nombreObjetosCambiarColor[1].push(event.object.name+"R", event.object.name.slice(0, -1));
     }
 
     setSelectedMeshState(nombreObjetosCambiarColor); //este es para el material 
   } else {
-    setSelectedMeshState(null); // Restablecer el estado si no se hace clic en un objeto
+    setSelectedMeshState(null); // Restablecer el estado si no se hace clic en un objeto, al final esto se hace en canvas. 
   }
   event.stopPropagation();
 }
@@ -71,8 +75,21 @@ export default function C3Model(props) {
   setSelectedMeshState = setSelectedMeshStateInternal;
 
   const getMaterial = (meshName) => { 
-    if(selectedMesh && selectedMesh.includes(meshName)){
-      return redMaterial;
+    if(selectedMesh)
+    {
+      if(selectedMesh[1].includes(meshName)){ //pinta los meshes rojos, el seleccionado y los extra.
+        return redMaterial;
+      }
+      if(selectedMesh[0].includes(meshName)){ //pinta la raiz larga de otro color, si existe
+        return greenMaterial;
+      }
+      if(selectedMesh[2])
+      {
+        if(meshName.includes(selectedMesh[1][0]) || meshName.includes(selectedMesh[1][0].slice(0, -1))){ //
+          console.log(selectedMesh[1][0]);
+          return greenMaterial;
+        }
+      }
     }
     return blueMaterial;
   };
