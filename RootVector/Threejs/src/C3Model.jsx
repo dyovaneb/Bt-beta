@@ -22,7 +22,7 @@ export const eventHandler = (event) =>
     var nombreObjetosCambiarColor = [[],[],true];
     nombreObjetosCambiarColor[1].push(event.object.name);
     if(event.object.alpha1){ //si es un simplicial, se encuentra la raíz larga.
-      nombreObjetosCambiarColor[2]=false;
+      nombreObjetosCambiarColor[2]=false; // no es una raiz, es un simplicial
       var raizlarga = []
       var nombreRaizLarga = ""
       for (let i = 0; i < 3; i++) {
@@ -83,10 +83,9 @@ export default function C3Model(props) {
       if(selectedMesh[0].includes(meshName)){ //pinta la raiz larga de otro color, si existe
         return greenMaterial;
       }
-      if(selectedMesh[2])
+      if(selectedMesh[2]) // como si clickeo en una raiz se deben buscar y pintar los simpliciales que contienen a la raiz en el nombre.
       {
         if(meshName.includes(selectedMesh[1][0]) || meshName.includes(selectedMesh[1][0].slice(0, -1))){ //
-          console.log(selectedMesh[1][0]);
           return greenMaterial;
         }
       }
