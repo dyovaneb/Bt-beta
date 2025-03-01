@@ -7,7 +7,7 @@ import { MeshStandardMaterial } from "three"
 
 const redMaterial = new MeshStandardMaterial({ color: "red" });
 const greenMaterial = new MeshStandardMaterial({ color: "green" });
-const blueMaterial = new MeshStandardMaterial({ color: "blue", opacity: 0.5, transparent: true });
+const blueMaterial = new MeshStandardMaterial({ color: "blue", opacity: 0.2, transparent: true });
 const solidBlueMaterial = new MeshStandardMaterial({ color: "blue" });
 
 let setSelectedMeshState;
