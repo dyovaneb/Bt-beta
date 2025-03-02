@@ -2,6 +2,7 @@ import { OrbitControls } from '@react-three/drei'
 import { Perf } from 'r3f-perf'
 import C3Model from './C3Model'
 import useGame from './stores/useGame.jsx'
+import B3Model from './B3Model.jsx'
 
 export default function Experience()
 {
@@ -19,7 +20,8 @@ export default function Experience()
 
         <ambientLight intensity={ 1.5 } />
 
-        <C3Model />
+        {/* <C3Model />         */}
+        <B3Model />
 
     </>
 }

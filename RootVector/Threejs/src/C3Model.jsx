@@ -12,7 +12,7 @@ const solidBlueMaterial = new MeshStandardMaterial({ color: "blue" });
 
 let setSelectedMeshState;
 
-export const eventHandler = (event) => 
+export const eventHandlerC3 = (event) => 
 {
   const { setSelectedMesh } = useStore.getState();
 
@@ -51,7 +51,7 @@ export const eventHandler = (event) =>
       nombreObjetosCambiarColor[1].push(event.object.name+"R", event.object.name.slice(0, -1));
     }
 
-    setSelectedMeshState(nombreObjetosCambiarColor); //este es para el material 
+    setSelectedMeshState(nombreObjetosCambiarColor); //este es para el material nombreObjetosCambiarColor [[raiz larga, simplicial, extra, objetos verde], [objetos a pintar, seleccionado], esRaiz]
   } else {
     setSelectedMeshState(null); // Restablecer el estado si no se hace clic en un objeto, al final esto se hace en canvas. 
   }
@@ -96,7 +96,7 @@ export default function C3Model(props) {
   };
 
   return (
-    <group {...props} dispose={null} onClick={eventHandler}>
+    <group {...props} dispose={null} onClick={eventHandlerC3}>
       <mesh
         name="(-200)"
         castShadow
