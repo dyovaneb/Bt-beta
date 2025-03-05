@@ -15,8 +15,9 @@ const handlePointerMissed = () => {
     const { setSelectedMesh } = useStore.getState(); //esto cambia el zustand creo
     setSelectedMesh(null)
 }
-
+//hay que generar otro componente que sean los botones que esté por encima de canvas para poder clickear.
 root.render(<>
+    <Interface/>    
     <Canvas
         shadows
         camera={ {
@@ -27,8 +28,8 @@ root.render(<>
         } }
         onPointerMissed={ handlePointerMissed }
     >
-        <Experience />
+    <Experience />
     </Canvas>
-    <Interface/>
+    
     </>
 )

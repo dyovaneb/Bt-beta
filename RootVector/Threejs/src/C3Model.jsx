@@ -1,6 +1,8 @@
 import React, { useRef, useState } from "react";
+import { useFrame } from "@react-three/fiber";
 import { useGLTF } from "@react-three/drei";
 import useStore from "./stores/useGame";
+import useMoveStore from "./stores/useMov";
 import { MeshStandardMaterial } from "three"
 
 // algo que resalte la base y la raíz más larga (planos perpendiculares y la pirámide que forman).
@@ -72,6 +74,17 @@ export default function C3Model(props) {
   const { setSelectedMesh } = useStore();
   const { nodes, materials } = useGLTF("./C3v2.glb");
 
+  const modeloC3 = useRef();
+  const {selectedModel, setSelectedModel} = useMoveStore();
+
+  useFrame(() => {
+    if (modeloC3.current) {
+      const targetPosition = selectedModel ? { x: 2, y: 1, z: 0 } : { x: -2, y: 0, z: 0 };
+      console.log(selectedModel)
+      modeloC3.current.position.lerp(targetPosition, 0.05);
+    }
+  })
+
   const [selectedMesh, setSelectedMeshStateInternal] = useState(null); //Cuando hay cambio acá, se vuelve a renderizar todo, por eso se llama a la función getmaterial de nuevo.
   setSelectedMeshState = setSelectedMeshStateInternal;
 
@@ -96,7 +109,7 @@ export default function C3Model(props) {
   };
 
   return (//ESto fue hecho con https://gltf.pmnd.rs/
-    <group {...props} dispose={null} onClick={eventHandlerC3}>  
+    <group {...props} dispose={null} onClick={eventHandlerC3} ref={modeloC3}>  
       <mesh
         name="(-200)"
         castShadow
