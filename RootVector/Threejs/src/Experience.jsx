@@ -20,8 +20,8 @@ export default function Experience()
 
         <ambientLight intensity={ 1.5 } />
 
-        {/* <C3Model />         */}
-        <B3Model />
+        <C3Model />
+        <B3Model position={[4,0,0]} />
 
     </>
 }

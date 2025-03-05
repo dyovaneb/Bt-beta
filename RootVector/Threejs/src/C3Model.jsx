@@ -95,8 +95,8 @@ export default function C3Model(props) {
     return solidBlueMaterial;
   };
 
-  return (
-    <group {...props} dispose={null} onClick={eventHandlerC3}>
+  return (//ESto fue hecho con https://gltf.pmnd.rs/
+    <group {...props} dispose={null} onClick={eventHandlerC3}>  
       <mesh
         name="(-200)"
         castShadow

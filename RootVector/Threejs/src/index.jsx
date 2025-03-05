@@ -11,6 +11,7 @@ const root = ReactDOM.createRoot(document.querySelector('#root'))
 
 const handlePointerMissed = () => {
     setSelectedMeshStateB3(null) //esto cambia para el material de B3, usar el sin nombre para c3, arreglar para cuando existan los dos.
+    setSelectedMeshState(null) //esto cambia para el material de B3, usar el sin nombre para c3, arreglar para cuando existan los dos.
     const { setSelectedMesh } = useStore.getState(); //esto cambia el zustand creo
     setSelectedMesh(null)
 }
