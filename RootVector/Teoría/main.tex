@@ -36,14 +36,49 @@
 
 
 
- \section{Sistema de ra\'ices af\'ines}
- 
+ \section{Sistema de ra\'ices af\'ines } Sea $V$ un espacio $\mathbb{R}$-vectorial y $A$ es un espacio afín sobre $V$.  Sea $\Psi$ un sistema de ra\'iz af\'in de $A^*$.  Recordamos la definición de sistema de raíces afín.
 
-\begin{remark}
-    Sea $\Phi$ un sistema de raíces reducido irreducible y $\Psi = \Psi_\Phi=\{a_1, \ldots, a_\ell\}$ el sistema de raíces afín asociado. 
-     Si $a_1, \ldots, a_\ell$ es una base para $\Phi$, $a_0$ es la raíz más larga, y definimos $\psi_1 = 
+ \begin{defi}
+    Un subconjunto $\Psi$ de $A^*$ es un sistema de raíz afín, si
+    \begin{enumerate}
+        \item $\Psi$ genera $A^*$ y no contiene funciones constante.
+        \item Para todo $\alpha\in\Psi$ hay un $\dot{\alpha}^\vee\in V\subset A^{**}$ tal que $\langle\alpha,\dot{\alpha}^\vee \rangle=2$ y la reflexi\'on $r_\alpha(x)=x-\langle x,\alpha \rangle\cdot \dot{\alpha}^\vee$ preserva $\Psi$.
+        \item Para $\alpha,\beta\in \Psi$, $\langle\alpha,\dot{\beta}^\vee \rangle\in \mathbb Z$,
+        \item El subgrupo $W(\Psi)$ de ${\rm Aut}(A)$ dado por $\{r_\alpha\colon \alpha\in \Psi\}$ actua propiamente, i.e. si $K_1,K_2\subset A$ son compactos, entonces $\{w\in W(\Psi)\colon wK_1\cap K_2\neq\empty\}$ es finito.
+    \end{enumerate}
+    Diremos que $\Psi$ es reducido, si $\alpha,\beta\in \Psi$ y $\alpha=r\cdot\beta$ con $r\in \mathbb Z$, entonces $r\in\{-1,1\}$.
+\end{defi}
+
+
+\section{Ejemplos}
+Sea $\Phi$ un sistema de raíz de $V^*$. El sistema de raiz af\'in asociado $\Psi_\Phi$ est\'a definido por
+    \[\{(a,k)\colon a\in \Phi, k\in I_\alpha\},\]
+    donde $I_a$ es $\mathbb Z$ si $a$ no es divisible o es $2\mathbb Z+1$, si no.
+    Entonces $\Psi_\Phi$ es un sistema de raíz afín reducido en $V^*\oplus k$.
+
+    \subsection{Arreglo de hiperplanos: habitaciones y facetas} Sea $\psi\in \Psi$ una ra\'iz af\'in.
+    Un \textit{hiperplano de ra\'iz afín asociado a $\psi$} de $A$ es el hiperplano af\'in dado por $H_\psi = \{x \in A: \psi(x) = 0\}$, donde $\psi \in \Psi$. Consideramos el arreglo de hiperplanos dado por $\{H_\psi\colon \psi\in \Psi\}$, lo que da una partici\'on en el espacio af\'in $A$.
+    
+    
+    Las partes que no intersectan ningun hiperplano se llama \emph{habitaciones} que no intersecatan ningun hiperplano. En general las partes se llaman \emph{facetas}.
+
+
+\section{Habitaciones y raices afines simples}
+
+Dada una habitación $\mathcal{C}$. Denotamos $\psi \in \Psi$ se llama \textit{positiva con respecto a $\mathcal C$} (respectivamente \textit{negativa con respecto a $\mathcal C$}) si $\psi(x) > 0$ (respectivamente $\psi(x) < 0$) para todo $x \in \mathcal{C}$. Denotamos por $\Psi(\mathcal{C})^+$ y $\Psi(\mathcal{C})^-$ el conjunto de raíces afines positivas y negativas, respectivamente. Observamos que tenemos la unión disjunta $\Psi = \Psi(\mathcal{C})^+ \cup \Psi(\mathcal{C})^-$.
+   
+ Sea $\mathcal{C}$ una cámara. Sea $\Psi(\mathcal{C})^0$ el conjunto que consiste en aquellas $\psi \in \Psi(\mathcal{C})^+$ indivisibles para las cuales $H_\psi$ es una pared de $\mathcal{C}$. El conjunto de estas raices afines se llama una \textit{base} de $\Psi$, y sus elementos se llaman \textit{raíces afines simples}.
+     
+ Observe que $\mathcal{C}$ está determinada de manera única por $\Psi(\mathcal{C})^0$, concretamente como la intersección de los semiespacios $A^{\psi>0}$ para $\psi \in \Psi(\mathcal{C})^0$.
+
+
+\section{Proposici\'on}
+Sea $\Phi$ un sistema de raíces reducido irreducible y $\Psi = \Psi_\Phi=\{a_1, \ldots, a_\ell\}$ el sistema de raíces afín asociado.  Si $a_1, \ldots, a_\ell$ es una base para $\Phi$, $a_0$ es la raíz más larga, y definimos $\psi_1 = 
     a_1, \ldots, \psi_\ell = a_\ell$ y $\psi_0 = 1$, entonces $\psi_v, \ldots, \psi_\ell$ es una base para $\Psi$. 
-\end{remark}
+
+
+
+
 
 
 
