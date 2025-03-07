@@ -12,3 +12,11 @@ dist/
 .DS_Store
 .vscode/
 .idea/
+
+# LaTeX
+*.aux
+*.log
+*.out
+*.fdb_latexmk
+*.fls
+*.synctex.gz
