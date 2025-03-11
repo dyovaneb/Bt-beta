@@ -18,7 +18,13 @@ const handlePointerMissed = () => {
 //hay que generar otro componente que sean los botones que esté por encima de canvas para poder clickear.
 root.render(<>
     <Interface/>    
-    <Canvas
+    <Canvas 
+        style={{ position: "absolute",
+            top: "30%",
+            left: "35%",
+            width: "64%",
+            height: "69%",
+            border: "1px solid black" }}
         shadows
         camera={ {
             fov: 45,
