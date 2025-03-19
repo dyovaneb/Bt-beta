@@ -20,9 +20,9 @@ root.render(<>
     <Interface/>    
     <Canvas 
         style={{ position: "absolute",
-            top: "30%",
-            left: "35%",
-            width: "64%",
+            top: "31%",
+            left: "30%",
+            width: "68%",
             height: "69%",
             border: "1px solid black" }}
         shadows

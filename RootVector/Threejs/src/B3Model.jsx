@@ -1,7 +1,9 @@
 import React, { useRef, useState } from "react";
 import { useGLTF } from "@react-three/drei";
 import useStore from "./stores/useGame";
+import useMoveStore from "./stores/useMov";
 import { MeshStandardMaterial } from "three"
+import { useFrame } from "@react-three/fiber";
 
 const redMaterial = new MeshStandardMaterial({ color: "red" });
 const greenMaterial = new MeshStandardMaterial({ color: "green" });
@@ -37,6 +39,17 @@ export default function B3Model(props){
 
     const [selectedMesh, setSelectedMeshStateInternal] = useState(null); //Cuando hay cambio acá, se vuelve a renderizar todo, por eso se llama a la función getmaterial de nuevo.
     setSelectedMeshStateB3 = setSelectedMeshStateInternal;
+
+    const modeloB3 = useRef();
+    const {selectedModel, setSelectedModel} = useMoveStore();
+
+    useFrame(() => {
+      if(modeloB3.current){
+        const targetPosition = !selectedModel ? { x: 4, y: 0, z: 0 } : { x: -2, y: 0, z: 0 };
+        console.log(selectedModel)
+        modeloB3.current.position.lerp(targetPosition, 0.01);
+      }
+    })
 
     const eventHandlerB3 = (event) => {
       if(event.object){
@@ -128,7 +141,7 @@ export default function B3Model(props){
         }
     }
     return  (
-        <group {...props} dispose={null} onClick={eventHandlerB3}>
+        <group {...props} dispose={null} onClick={eventHandlerB3} ref={modeloB3}>
             {meshes}
         </group>
     );

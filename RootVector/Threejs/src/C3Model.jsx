@@ -79,9 +79,9 @@ export default function C3Model(props) {
 
   useFrame(() => {
     if (modeloC3.current) {
-      const targetPosition = selectedModel ? { x: 2, y: 1, z: 0 } : { x: -2, y: 0, z: 0 };
+      const targetPosition = selectedModel ? { x: 4, y: 0, z: 0 } : { x: -2, y: 0, z: 0 };
       console.log(selectedModel)
-      modeloC3.current.position.lerp(targetPosition, 0.05);
+      modeloC3.current.position.lerp(targetPosition, 0.01);
     }
   })
 

@@ -10,7 +10,7 @@ export function Interface()
     const handleModelChange = () => {
         event.stopPropagation();
         console.log("Cambio de")
-        setSelectedModel(true)
+        setSelectedModel(!selectedModel)
     };
 
     return <div className="interface">
