@@ -30,3 +30,9 @@ export function Interface()
     </div>
 }
 
+// useEffect(() => {
+//         if (window.MathJax) {
+//             window.MathJax.typeset();
+//         }
+//     }, [selectedMesh]);
+// Problema, no reconoce los { }
