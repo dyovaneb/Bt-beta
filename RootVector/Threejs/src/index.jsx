@@ -1,6 +1,7 @@
 import './style.css'
 import ReactDOM from 'react-dom/client'
 import { Canvas } from '@react-three/fiber'
+import {MathJaxContext} from 'better-react-mathjax'
 import Experience from './Experience.jsx'
 import { Interface } from './Interface'
 import { setSelectedMeshState } from './C3Model.jsx'
@@ -17,7 +18,9 @@ const handlePointerMissed = () => {
 }
 //hay que generar otro componente que sean los botones que esté por encima de canvas para poder clickear.
 root.render(<>
-    <Interface/>    
+    <MathJaxContext>
+        <Interface />
+    </MathJaxContext>
     <Canvas 
         style={{ position: "absolute",
             top: "31%",

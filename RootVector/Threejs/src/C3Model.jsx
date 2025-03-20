@@ -16,42 +16,8 @@ let setSelectedMeshState;
 
 export const eventHandlerC3 = (event) => 
 {
-  const { setSelectedMesh } = useStore.getState();
-
   if (event.object) {
-    const meshName = event.object.name;
-    setSelectedMesh(event.object); // este es para el zustand ?
-    //crear la lista de nombres de objetos que deben cambiar de color.
-    var nombreObjetosCambiarColor = [[],[],true];
-    nombreObjetosCambiarColor[1].push(event.object.name);
-    if(event.object.alpha1){ //si es un simplicial, se encuentra la raíz larga.
-      nombreObjetosCambiarColor[2]=false; // no es una raiz, es un simplicial
-      var raizlarga = []
-      var nombreRaizLarga = ""
-      for (let i = 0; i < 3; i++) {
-        raizlarga.push(
-          2*stringToVector(event.object.alpha1)[i] + 
-          2*stringToVector(event.object.alpha2)[i] + 
-          stringToVector(event.object.alpha3)[i]
-        );
-      }
-      nombreRaizLarga="(" + raizlarga.toString().replace(/,/g, '') + ")";
-      nombreObjetosCambiarColor[0].push(
-        nombreRaizLarga,
-        nombreRaizLarga+"R"
-      );
-      nombreObjetosCambiarColor[1].push(
-        event.object.alpha1, 
-        event.object.alpha1+"R", 
-        event.object.alpha2, 
-        event.object.alpha2+"R", 
-        event.object.alpha3, 
-        event.object.alpha3+"R"
-      );
-    }
-    else{ // si no es un simplicial, debería pintar todos los que son formados por él.
-      nombreObjetosCambiarColor[1].push(event.object.name+"R", event.object.name.slice(0, -1));
-    }
+    var nombreObjetosCambiarColor = objetosAPintar(event.object);
 
     setSelectedMeshState(nombreObjetosCambiarColor); //este es para el material nombreObjetosCambiarColor [[raiz larga, simplicial, extra, objetos verde], [objetos a pintar, seleccionado], esRaiz]
   } else {
@@ -70,8 +36,62 @@ function stringToVector(str) {
   return vector;
 }
 
+function objetosAPintar(objeto){
+  const meshName = objeto.name;
+  const { setSelectedMesh } = useStore.getState();
+    setSelectedMesh(objeto); // este es para el zustand ?
+    //crear la lista de nombres de objetos que deben cambiar de color.
+    var nombreObjetosCambiarColor = [[],[],true];
+    nombreObjetosCambiarColor[1].push(objeto.name);
+    if(objeto.alpha1){ //si es un simplicial, se encuentra la raíz larga.
+      nombreObjetosCambiarColor[2]=false; // no es una raiz, es un simplicial
+      var raizlarga = []
+      var nombreRaizLarga = ""
+      for (let i = 0; i < 3; i++) {
+        raizlarga.push(
+          2*stringToVector(objeto.alpha1)[i] + 
+          2*stringToVector(objeto.alpha2)[i] + 
+          stringToVector(objeto.alpha3)[i]
+        );
+      }
+      nombreRaizLarga="(" + raizlarga.toString().replace(/,/g, '') + ")";
+      nombreObjetosCambiarColor[0].push(
+        nombreRaizLarga,
+        nombreRaizLarga+"R"
+      );
+      nombreObjetosCambiarColor[1].push(
+        objeto.alpha1, 
+        objeto.alpha1+"R", 
+        objeto.alpha2, 
+        objeto.alpha2+"R", 
+        objeto.alpha3, 
+        objeto.alpha3+"R"
+      );
+    }
+    else{ // si no es un simplicial, debería pintar todos los que son formados por él.
+      nombreObjetosCambiarColor[1].push(objeto.name+"R", objeto.name.slice(0, -1));
+    }
+    return nombreObjetosCambiarColor;
+}
+
+function findObjectByName(nodes, name) {
+  for (const key in nodes) {
+    if (nodes[key].name === name) {
+      return nodes[key];
+    }
+  }
+  return null;
+}
+
+export function meshASeleccionar(meshName){
+  var objeto = findObjectByName(nodes, meshName); //NO FUNCIONa lo busca el modelo no en las meshes de abajo, hay que definir las meshes antes para poder recorrerlas algo como en b3.
+  var nombreObjetosCambiarColor = objetosAPintar(objeto);
+
+  setSelectedMeshState(nombreObjetosCambiarColor);
+}
+
 export default function C3Model(props) {
-  const { setSelectedMesh } = useStore();
+  const { setSelectedMesh } = useStore(); //esto era para usegame pero parece que lo estoy haciendo antes
   const { nodes, materials } = useGLTF("./C3v2.glb");
 
   const modeloC3 = useRef();
