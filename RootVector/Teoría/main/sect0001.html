@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>
+  MathJax = { 
+    tex: {
+		    inlineMath: [['\\(','\\)']]
+	} }
+</script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+<meta name="generator" content="plasTeX" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>: Sistema de raíces afínes </title>
+<link rel="next" href="sect0002.html" title="Ejemplos" />
+<link rel="prev" href="index.html" title="" />
+<link rel="up" href="index.html" title="" />
+<link rel="stylesheet" href="styles/theme-white.css" />
+<link rel="stylesheet" href="styles/amsthm.css" />
+</head>
+
+<body>
+<header>
+<svg  id="toc-toggle" class="icon icon-list-numbered "><use xlink:href="symbol-defs.svg#icon-list-numbered"></use></svg>
+<h1 id="doc_title"><a href="index.html"></a></h1>
+</header>
+
+<div class="wrapper">
+<nav class="toc">
+<ul class="sub-toc-0">
+<li class=" active current">
+  <a href="sect0001.html"><span class="toc_ref">1</span> <span class="toc_entry">Sistema de raíces afínes </span></a>
+ </li>
+<li class="">
+  <a href="sect0002.html"><span class="toc_ref">2</span> <span class="toc_entry">Ejemplos</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0003.html"><span class="toc_ref">2.1</span> <span class="toc_entry">Arreglo de hiperplanos: habitaciones y facetas</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0004.html"><span class="toc_ref">3</span> <span class="toc_entry">Habitaciones y raices afines simples</span></a>
+ </li>
+<li class="">
+  <a href="sect0005.html"><span class="toc_ref">4</span> <span class="toc_entry">Proposición</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0006.html"><span class="toc_ref">4.1</span> <span class="toc_entry">Puntos especiales</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0007.html"><span class="toc_ref">5</span> <span class="toc_entry">Edificios de Bruhat-Tits: general</span></a>
+ </li>
+<li class="">
+  <a href="sect0008.html"><span class="toc_ref">6</span> <span class="toc_entry">Aplicaciones</span></a>
+ </li>
+<li class="">
+  <a href="sect0009.html"><span class="toc_ref"></span> <span class="toc_entry">Referencias</span></a>
+ </li>
+</ul>
+</nav>
+
+<div class="content">
+<div class="content-wrapper">
+
+
+<div class="main-text">
+<h1 id="a0000000002">1 Sistema de raíces afínes </h1>
+<p> Sea \(V\) un espacio \(\mathbb {R}\)-vectorial y \(A\) es un espacio afín sobre \(V\). Sea \(\Psi \) un sistema de raíz afín de \(A^*\). Recordamos la definición de sistema de raíces afín. </p>
+<div class="defi_thmwrapper theorem-style-definition" id="a0000000011">
+  <div class="defi_thmheading">
+    <span class="defi_thmcaption">
+    Definición
+    </span>
+    <span class="defi_thmlabel">1.1</span>
+  </div>
+  <div class="defi_thmcontent">
+  <p>Un subconjunto \(\Psi \) de \(A^*\) es un sistema de raíz afín, si </p>
+<ol class="enumerate">
+  <li><p>\(\Psi \) genera \(A^*\) y no contiene funciones constante. </p>
+</li>
+  <li><p>Para todo \(\alpha \in \Psi \) hay un \(\dot{\alpha }^\vee \in V\subset A^{**}\) tal que \(\langle \alpha ,\dot{\alpha }^\vee \rangle =2\) y la reflexión \(r_\alpha (x)=x-\langle x,\alpha \rangle \cdot \dot{\alpha }^\vee \) preserva \(\Psi \). </p>
+</li>
+  <li><p>Para \(\alpha ,\beta \in \Psi \), \(\langle \alpha ,\dot{\beta }^\vee \rangle \in \mathbb Z\), </p>
+</li>
+  <li><p>El subgrupo \(W(\Psi )\) de \({\rm Aut}(A)\) dado por \(\{ r_\alpha \colon \alpha \in \Psi \} \) actua propiamente, i.e. si \(K_1,K_2\subset A\) son compactos, entonces \(\{ w\in W(\Psi )\colon wK_1\cap K_2\neq \empty \} \) es finito. </p>
+</li>
+</ol>
+<p> Diremos que \(\Psi \) es reducido, si \(\alpha ,\beta \in \Psi \) y \(\alpha =r\cdot \beta \) con \(r\in \mathbb Z\), entonces \(r\in \{ -1,1\} \). </p>
+
+  </div>
+</div>
+
+</div> <!--main-text -->
+</div> <!-- content-wrapper -->
+</div> <!-- content -->
+</div> <!-- wrapper -->
+
+<nav class="prev_up_next">
+  <a href="index.html" title=""><svg  class="icon icon-arrow-left "><use xlink:href="symbol-defs.svg#icon-arrow-left"></use></svg>
+</a>
+  <a href="index.html" title=""><svg  class="icon icon-arrow-up "><use xlink:href="symbol-defs.svg#icon-arrow-up"></use></svg>
+</a>
+  <a href="sect0002.html" title="Ejemplos"><svg  class="icon icon-arrow-right "><use xlink:href="symbol-defs.svg#icon-arrow-right"></use></svg>
+</a>
+</nav>
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/plastex.js"></script>
+<script type="text/javascript" src="js/svgxuse.js"></script>
+</body>
+</html>

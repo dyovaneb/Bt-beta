@@ -46,7 +46,6 @@ export default function B3Model(props){
     useFrame(() => {
       if(modeloB3.current){
         const targetPosition = !selectedModel ? { x: 4, y: 0, z: 0 } : { x: -2, y: 0, z: 0 };
-        console.log(selectedModel)
         modeloB3.current.position.lerp(targetPosition, 0.01);
       }
     })
