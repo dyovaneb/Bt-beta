@@ -25,6 +25,7 @@ export function Interface()
     const handleMeshSelection = (event) => {
         event.preventDefault(); // Evitar el comportamiento predeterminado del enlace
         meshASeleccionar("(200)");
+        console.log("seleccionar")
       };
 
     return <div className="interface">
@@ -45,14 +46,15 @@ export function Interface()
         {" "}
         Sea{" "}
         <a onClick={handleMeshSelection}>
-          {
-            "\\( \\lbrace (a,k)\\colon a\\in \\Phi , k\\in I_\\alpha \\rbrace , \\)"
-          }
+          {"\\( \\lbrace (a,k)\\colon a\\in \\Phi , k\\in I_\\alpha \\rbrace , \\)"}
         </a>{" "}
         un sistema de raíz de{" "}
-      </MathJax>{" "}
-      \(V^*\). El sistema de raiz afín asociado <a href="">\(\Psi _\Phi \)</a>{" "}
-      está definido por</div>
+      
+      <h1 id="a0000000005">3 Habitaciones y raices afines simples</h1>
+<p>Dada una habitación {"\\( \\mathcal{C} \\)"}. </p>
+</MathJax>{" "}
+</div>
+
     </div>
 }
 

@@ -1,5 +1,4 @@
-html,
-body,
+
 #root
 {
     position: absolute;
@@ -10,32 +9,39 @@ body,
     background: ivory;
 }
 
+.experience-canvas
+{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 30px;
+    height: 30px;
+    border: 1px solid black;
+}
+
 /**
 * interface que ocua todo
 */
 .interface
 {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    top: 100px;
+    left: 100px;
+    border: 2px solid #4CAF50;
     font-family: 'Bebas Neue', sans-serif;
+    z-index: 10;
 }
 /**
 *Titulo
 */
 .titulo
 {
-    position: absolute;
-    top: 15%;
-    width: 100%;
     color: #fff;
     font-size: 6vh;
     background: #00000033;
     padding-top: 5px;
     text-align: center;
-    z-index: 10;
+    
 }
 
 /**
@@ -43,12 +49,9 @@ body,
 */
 .contenido
 {
-    position: absolute;
-    top: 50%;
-    width: 30%;
     color: #fff;
     font-size: 3vh;
-    background: #00000033;
+    background: #943030d0;
     padding-top: 5px;
     text-align: center;
 }

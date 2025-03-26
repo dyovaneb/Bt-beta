@@ -21,13 +21,15 @@ root.render(<>
     <MathJaxContext>
         <Interface />
     </MathJaxContext>
-    <Canvas 
-        style={{ position: "absolute",
-            top: "31%",
-            left: "30%",
-            width: "68%",
-            height: "69%",
-            border: "1px solid black" }}
+    <Canvas
+        //className="experience-canvas"
+        //Esta parece ser la única forma de cambiar el estilo del canvas.
+        // style={{ position: "absolute", 
+        //     top: "31%",
+        //     left: "30%",
+        //     width: "68%",
+        //     height: "69%",
+        //     border: "1px solid black" }}
         shadows
         camera={ {
             fov: 45,
