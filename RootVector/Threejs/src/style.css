@@ -25,10 +25,12 @@
 .interface
 {
     position: absolute;
+    width: 30%;
     top: 100px;
     left: 100px;
-    border: 2px solid #4CAF50;
-    font-family: 'Bebas Neue', sans-serif;
+    border: 2px solid #615858d0;
+    background: #ffe8e8d0;
+    font-family: 'Helvetica', 'Bebas Neue', sans-serif;
     z-index: 10;
 }
 /**
@@ -37,7 +39,6 @@
 .titulo
 {
     color: #fff;
-    font-size: 6vh;
     background: #00000033;
     padding-top: 5px;
     text-align: center;
@@ -50,8 +51,12 @@
 .contenido
 {
     color: #fff;
-    font-size: 3vh;
     background: #943030d0;
     padding-top: 5px;
     text-align: center;
+}
+
+.math-container
+{
+    padding: 10px;
 }
