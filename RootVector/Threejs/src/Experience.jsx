@@ -8,7 +8,7 @@ export default function Experience()
 {
 
     const rootSystem = useGame((state) => { return state.rootSystem }) //solo hay que pedir la info que se necesita, si algo cambia se renderea el componente completo.  esto es la store.
-    console.log(rootSystem)
+
     return <> 
 
         <Perf position="top-right" />
@@ -20,8 +20,8 @@ export default function Experience()
 
         <ambientLight intensity={ 1.5 } />
 
-        <C3Model />
-        <B3Model position={[4,0,0]} />
+        <C3Model position={[4,0,0]}/>
+        <B3Model position={[0,0,0]} />
 
     </>
 }

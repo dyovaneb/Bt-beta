@@ -38,14 +38,14 @@ export default function B3Model(props){
     const { nodes } = useGLTF("./B3.glb");
 
     const [selectedMesh, setSelectedMeshStateInternal] = useState(null); //Cuando hay cambio acá, se vuelve a renderizar todo, por eso se llama a la función getmaterial de nuevo.
-    setSelectedMeshStateB3 = setSelectedMeshStateInternal;
+    setSelectedMeshStateB3 = setSelectedMeshStateInternal; //creo que es solo para poder definir setSelectedMeshStateB3 en el scope global.
 
     const modeloB3 = useRef();
     const {selectedModel, setSelectedModel} = useMoveStore();
 
     useFrame(() => {
       if(modeloB3.current){
-        const targetPosition = !selectedModel ? { x: 4, y: 0, z: 0 } : { x: -2, y: 0, z: 0 };
+        const targetPosition = selectedModel ? { x: 0, y: 0, z: 0 } : { x: 0, y: 0, z: 0 };
         modeloB3.current.position.lerp(targetPosition, 0.01);
       }
     })
@@ -54,8 +54,9 @@ export default function B3Model(props){
       if(event.object){
         const { setSelectedMesh } = useStore.getState();
         setSelectedMesh(event.object); //para el zustand
-        var nombreObjetosCambiarColor = [[],[],true]
+        var nombreObjetosCambiarColor = [[],[],true] //Raiz larga (verde), objeto clickeado y raices de la base (rojo), es raíz o simplicial
         nombreObjetosCambiarColor[1].push(event.object.name);
+        console.log(event.object.name);
         if(event.object.alpha1){ //es simplicial
           nombreObjetosCambiarColor[2]=false;
           var raizlarga = []
