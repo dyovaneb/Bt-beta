@@ -33,6 +33,10 @@ function eventHandlerB3(event) {
   const [selectedMesh, setSelectedMeshStateInternal] = useState(null);
 }
 
+export function pintarMesh(){
+  console.log("pintarMesh")
+  setSelectedMeshStateB3([[],["(1-10)(01-1)(001)"],true]);
+}
 
 export default function B3Model(props){
     const { nodes } = useGLTF("./B3.glb");
