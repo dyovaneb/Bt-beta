@@ -17,12 +17,13 @@ const handlePointerMissed = () => {
     setSelectedMesh(null)
 }
 //hay que generar otro componente que sean los botones que esté por encima de canvas para poder clickear.
-root.render(<>
+root.render(
+    <div className="app-container">
     <MathJaxContext>
         <Interface />
     </MathJaxContext>
     <Canvas
-        //className="experience-canvas"
+        className="experience-canvas"
         //Esta parece ser la única forma de cambiar el estilo del canvas.
         // style={{ position: "absolute", 
         //     top: "31%",
@@ -39,8 +40,8 @@ root.render(<>
         } }
         onPointerMissed={ handlePointerMissed }
     >
-    <Experience />
+    <Experience/>
     </Canvas>
     
-    </>
+    </div>
 )
